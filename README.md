@@ -3,7 +3,7 @@ The Openbox light and advanced Window Manager with a setup creating a user
 friendly desktop environment in Linux distributions.
 
 ## Presentation
-(Openbox)[https://openbox.org] is a Window Manager developped by Dana Jansens
+[Openbox](https://openbox.org) is a Window Manager developped by Dana Jansens
 and several other people, meant for simplicity and lightness in the use of
 GNU/Linux distributions.
 
@@ -17,7 +17,7 @@ to be used in a variety of aging computers.
 
 ## Brief history
 It has been delivered in several prebuilt distributions since 2009, through
-(Linuxvillage)[https://linuxvillage.org], and before at (PCLinuxOS-Fr.org)[https://pclinuxos-fr.org]
+[Linuxvillage](https://linuxvillage.org), and before at [PCLinuxOS-Fr.org](https://pclinuxos-fr.org)
 
 When remixed using PCLinuxOS as a basis, its code name was Bonsaï, and meant to
 be used in computers with low ressource.
@@ -44,7 +44,7 @@ the window theme, background and so on. If you make changes to the openbox
 configuration setup (menu.xml, rc.xml files) proceed with caution.
 
 If you break something while doing so, you can always copy the original files
-back from /etc/skel to your personal directory.
+back from `/etc/skel` to your personal directory.
 
 ## Dependencies
 To get the full benefits from the files provided here, you will need the
@@ -90,7 +90,7 @@ icons.
 
 More options can be chosen, though. (Desktop without icons, root background with
 or without a wallpaper : have a look into the `autostart` file in the `openbox`
-directory and at the (Openbox)[https://openbox.org] website).
+directory and at the [Openbox](https://openbox.org) website).
 
 ### A panel
 We used to have `LXPanel` in Bento Openbox setups, but sometimes we'd rather
