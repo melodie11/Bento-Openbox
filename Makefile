@@ -60,7 +60,7 @@ PLYMOUTH = "plymouth/themes"
 ## INSTALL
 install:
 # Folders and files from the etcskel directory go to `/etc/skel`
-	rsync -r $(ETCSKEL)/ $(ETC_SKEL)
+	rsync -rl $(ETCSKEL)/ $(ETC_SKEL)
 
 # We will need the language files to have a symlink
 # Symlink n°1 - we remove it if it exists
@@ -91,25 +91,25 @@ install:
 
 # The `xcompmgr.sh`, `xsnow.sh` and `Plymouth theme switcher` scripts will go in
 # `/usr/local/bin` and will be executable
-	rsync -r $(SRC)/ $(USR_LOCAL_BIN)/
+	rsync -rl $(SRC)/ $(USR_LOCAL_BIN)/
 	chmod -R 755 $(USR_LOCAL_BIN)/
 	
 # The `bento` directory with all sub-directories and images go to `/usr/share/bento`
-	rsync -r $(BENTO) $(USR_SHARE)/
+	rsync -rl $(BENTO) $(USR_SHARE)/
 	find $(USR_SHARE)/$(BENTO)/ -type f -exec chmod 644 {} \;
 	
 # Openbox additional themes go into `/usr/share/themes`
-	rsync -r $(THEMES)/ $(USR_SHARE_THEMES)/
+	rsync -rl $(THEMES)/ $(USR_SHARE_THEMES)/
 	find $(USR_SHARE_THEMES)/ -type f -exec chmod 644 {} \;
 
 # The `Vibrantly-Simple-Dark-Pink` and `Vibrantly-Simple-Dark-Teal` icon sets
 # go into `/usr/share/icons`
-	rsync -r $(ICONS)/ $(USR_SHARE_ICONS)/
+	rsync -rl $(ICONS)/ $(USR_SHARE_ICONS)/
 	find $(USR_SHARE_ICONS)/ -type f -exec chmod 644 {} \;
 
 # Plymouth theme go into `/usr/share/plymouth/themes. /!\ needs post-install
 # finishing with an update of the initramfs
-	rsync -r $(PLYMOUTH)/ $(PLYMOUTH_THEMES)/
+	rsync -rl $(PLYMOUTH)/ $(PLYMOUTH_THEMES)/
 
 # You will want to enable it using the provided script
 	$(USR_LOCAL_BIN)/plymouth-theme-switcher.sh
@@ -160,3 +160,4 @@ clean:
 # You can keep or remove the /usr/local/bin/plymouth-theme-switcher.sh script
 # as you please. If you wish to remove it, uncomment the next line.
 #	rm -f $(USR_LOCAL_BIN)/plymouth-theme-switcher.sh
+
