@@ -7,7 +7,7 @@ letItSnow() {
 	xcompmgr.sh unset
 	feh --bg-scale /usr/share/bento/background.jpg
 	pidof xsnow || xsnow &
-	touch $SNOW_MARKER
+	touch "$SNOW_MARKER"
 }
 
 stopDaSnow() {
@@ -15,15 +15,15 @@ stopDaSnow() {
 	killall feh
 	pcmanfm --desktop &
 	xcompmgr.sh set
-	rm $SNOW_MARKER
+	rm "$SNOW_MARKER"
 }
 
 checkDaSnow() {
-	[ -f $SNOW_MARKER ] && letItSnow
+	[ -f "$SNOW_MARKER" ] && letItSnow
 }
 
 toggleDaSnow() {
-	if [ -f $SNOW_MARKER ]; then
+	if [ -f "$SNOW_MARKER" ]; then
 		stopDaSnow;
 	else
 		letItSnow;
@@ -35,5 +35,5 @@ off () { stopDaSnow; }
 restore () { checkDaSnow; }
 toggle () { toggleDaSnow; }
 
+"$@"
 
-$@

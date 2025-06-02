@@ -7,6 +7,7 @@
 echo "Show the Plymouth themes installed:"
 ls /usr/share/plymouth/themes/
 
+# shellcheck disable=SC2162
 read -p "Enter the name for your chosen theme or type 'q' to quit: " theme
 
 if [[ "$theme" == "q" ]]; then
@@ -26,8 +27,8 @@ PLYMOUTH_FILE="/usr/share/plymouth/themes/${theme}/${theme}.plymouth"
 update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth "$PLYMOUTH_FILE" 120
 
 # Adding the Bento text theme
-TEXT_THEME_NAME = "bento-text"
-PLYMOUTH_FILE_TEXT = "/usr/share/plymouth/themes/${TEXT_THEME_NAME}/${TEXT_THEME_NAME}.plymouth"
+TEXT_THEME_NAME="bento-text"
+PLYMOUTH_FILE_TEXT="/usr/share/plymouth/themes/${TEXT_THEME_NAME}/${TEXT_THEME_NAME}.plymouth"
 
 # The Bento text theme is an additional alternative, with a slighly inferior priority
 update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth "$PLYMOUTH_FILE_TEXT" 115
@@ -45,3 +46,4 @@ echo "Plymouth theme changed successfully. The new theme will show
 during next reboot."
 
 exit 0
+

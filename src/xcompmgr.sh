@@ -4,14 +4,14 @@ XCP_CONFIG="$HOME/.config/xcompmgr"
 
 run() {
 	killall xcompmgr 2>/dev/null
-	echo "$1" > $XCP_CONFIG
-	xcompmgr $1 &
+	echo "$1" > "$XCP_CONFIG"
+	xcompmgr "$1" &
 }
 
 case "$1" in
 	"unset")
 		killall xcompmgr
-		rm $XCP_CONFIG
+		rm "$XCP_CONFIG"
 		;;
 	"set")
 		killall xsnow
@@ -29,13 +29,14 @@ case "$1" in
 		pcmanfm --desktop
 		;;
 	"restore")
-		if [ -f $XCP_CONFIG ]; then
-			XCP_ARG=$(cat $XCP_CONFIG)
+		if [ -f "$XCP_CONFIG" ]; then
+			XCP_ARG=$(cat "$XCP_CONFIG")
 			killall xcompmgr 2>/dev/null
-			xcompmgr $XCP_ARG &
+			xcompmgr "$XCP_ARG" &
 		fi
 		;;
 	*)
 		echo "This script accepts the following arguments: set, unset, setshaded, setshadowshade, restore"
 
 esac
+
