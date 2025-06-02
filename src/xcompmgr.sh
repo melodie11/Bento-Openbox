@@ -4,7 +4,7 @@ XCP_CONFIG="$HOME/.config/xcompmgr"
 
 run() {
 	killall xcompmgr 2>/dev/null
-	echo "$1" > $"XCP_CONFIG"
+	echo "$1" > "$XCP_CONFIG"
 	xcompmgr "$1" &
 }
 
