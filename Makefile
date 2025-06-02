@@ -102,8 +102,8 @@ install:
 	rsync -rl $(THEMES)/ $(USR_SHARE_THEMES)/
 	find $(USR_SHARE_THEMES)/ -type f -exec chmod 644 {} \;
 
-# The `Vibrantly-Simple-Dark-Pink` and `Vibrantly-Simple-Dark-Teal` icon sets
-# go into `/usr/share/icons`
+# The `Vibrantly-Simple-Dark-Pink` and `Vibrantly-Simple-Dark-Teal` icon sets and
+# the two `run.svg` and `run.png` go into `/usr/share/icons`
 	rsync -rl $(ICONS)/ $(USR_SHARE_ICONS)/
 	find $(USR_SHARE_ICONS)/ -type f -exec chmod 644 {} \;
 
