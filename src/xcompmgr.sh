@@ -39,3 +39,4 @@ case "$1" in
 		echo "This script accepts the following arguments: set, unset, setshaded, setshadowshade, restore"
 
 esac
+
