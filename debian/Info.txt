@@ -6,7 +6,11 @@
 Add the `openbox-menu` binary included in this directory into the 
 `src` directory
 
-Run the `make install` command from within the root directory as
-usual.
+## WIP incase the packages related to the files belown ask for a
+## root password instead of starting with the password of the user
+## having `sudo` rights, copy the content of `rules.d` into `/etc/polkit-1`
+## (check and pick the files you need).
 
-`
+Adapt the Makefile accordingly and run the `make install` command 
+from within the root directory as usual.
+
