@@ -1,0 +1,2 @@
+# This is the Bento Openbox Debian section dedicated to build Bento Debian
+# editions
