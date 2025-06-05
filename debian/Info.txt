@@ -1,0 +1,12 @@
+# Additional things needed in Debian 12
+
+## openbox-menu isn't packaged anymore - until it is again we can 
+## add the binary precompiled for this Debian edition
+
+Add the `openbox-menu` binary included in this directory into the 
+`src` directory
+
+Run the `make install` command from within the root directory as
+usual.
+
+`
