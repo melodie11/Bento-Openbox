@@ -32,20 +32,12 @@
 ## How to use this Makefile
 #  To install, type `make install` from within the root directory of the bundle, 
 #  with the administration rights.
-# To remove, type `make clean` also using administration rights.
+#  To remove, type `make clean` also using administration rights.
+##
+#  Widely commented, it is up to you to check its content before using it,
+#  to avoid any possible issue.
 
 SHELL := /bin/bash
-
-## Destination Directories
-ETC_SKEL = /etc/skel
-ETC_XDG_MENUS = /etc/xdg/menus
-ETC_LIGHTDM = /etc/lightdm
-ETC_POLKIT = /etc/polkit-1
-USR_LOCAL_BIN = /usr/local/bin
-USR_SHARE = /usr/share
-USR_SHARE_THEMES = /usr/share/themes
-USR_SHARE_ICONS = /usr/share/icons
-PLYMOUTH_THEMES = /usr/share/plymouth/themes
 
 ## Source Files and Directories
 ETCSKEL = etcskel
@@ -56,9 +48,23 @@ THEMES = themes
 ICONS = icons
 PLYMOUTH = "plymouth/themes"
 
+## Destination Directories
+ETC = /etc
+ETC_SKEL = /etc/skel
+ETC_XDG_MENUS = /etc/xdg/menus
+ETC_LIGHTDM = /etc/lightdm
+ETC_POLKIT = /etc/polkit-1
+USR_LOCAL_BIN = /usr/local/bin
+USR_SHARE = /usr/share
+USR_SHARE_THEMES = /usr/share/themes
+USR_SHARE_ICONS = /usr/share/icons
+PLYMOUTH_THEMES = /usr/share/plymouth/themes
 
 ## INSTALL
 install:
+# The file environment located in the `configs` directory goes to `/etc`
+	install -m 644 $(CONFIGS)/environment $(ETC)/
+	
 # Folders and files from the etcskel directory go to `/etc/skel`
 	rsync -rl $(ETCSKEL)/ $(ETC_SKEL)
 
