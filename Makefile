@@ -51,6 +51,7 @@ PLYMOUTH = "plymouth/themes"
 ## Destination Directories
 ETC = /etc
 ETC_SKEL = /etc/skel
+ETC_SYSCTL_D = /etc/sysctl.d
 ETC_XDG_MENUS = /etc/xdg/menus
 ETC_LIGHTDM = /etc/lightdm
 ETC_POLKIT = /etc/polkit-1
@@ -81,23 +82,26 @@ install:
 # We need the oblocale.sh script located in the `scripts` directory to be executable
 	chmod a+x $(ETC_SKEL)/.config/openbox/scripts/oblocale.sh
 
+# The files `10-magic-sysrq.conf`, `50-swappiness.conf` and `README.sysctl` located
+# under the `configs` directory go into /etc/sysctl.d
+	install -m 644 $(CONFIGS)/{10-magic-sysrq.conf,50-swappiness.conf,README.sysctl} $(ETC)/$(ETC_SYSCTL_D)/
+
 # The file used to manage *the categories* for *the applications menus* go to `/etc/xdg/menus`
 	install -m 644 $(CONFIGS)/applications.menu $(ETC_XDG_MENUS)
 
 # The LighDM configuration files lightdm.conf and lightdm-gtk-greeter.conf will go to /etc/lightdm.conf.d
 # in case another configuration exists.
 	mkdir -p $(ETC_LIGHTDM)/lightdm.conf.d
-	install -m 644 $(CONFIGS)/lightdm.conf $(ETC_LIGHTDM)/lightdm.conf.d/
-	install -m 644 $(CONFIGS)/lightdm-gtk-greeter.conf $(ETC_LIGHTDM)/lightdm.conf.d/
+	install -m 644 $(CONFIGS)/{lightdm.conf,lightdm-gtk-greeter.conf} $(ETC_LIGHTDM)/lightdm.conf.d/
 
 # The LightDM configuration files 01_debian.conf and 02_ubuntu.conf will go to /etc/lightdm.conf.d
 	install -m 644 $(CONFIGS)/{01_debian.conf,02_ubuntu.conf} $(ETC_LIGHTDM)/lightdm.conf.d/
 	
 # File `55-conf.pkla` goes inside `/etc/polkit-1/localauthority/50-local.d`
 	mkdir -p $(ETC_POLKIT)/localauthority/50-local.d
-	chmod 700 $(ETC_POLKIT)/localauthority
 	install -m 644 $(CONFIGS)/55-conf.pkla $(ETC_POLKIT)/localauthority/50-local.d
-
+	chmod 700 $(ETC_POLKIT)/localauthority
+	
 # The `xcompmgr.sh`, `xsnow.sh` and `Plymouth theme switcher` scripts will go in
 # `/usr/local/bin` and will be executable
 	rsync -rl $(SRC)/ $(USR_LOCAL_BIN)/
