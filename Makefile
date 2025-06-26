@@ -89,6 +89,9 @@ install:
 	mkdir -p $(ETC_LIGHTDM)/lightdm.conf.d
 	install -m 644 $(CONFIGS)/lightdm.conf $(ETC_LIGHTDM)/lightdm.conf.d/
 	install -m 644 $(CONFIGS)/lightdm-gtk-greeter.conf $(ETC_LIGHTDM)/lightdm.conf.d/
+
+# The LightDM configuration files 01_debian.conf and 02_ubuntu.conf will go to /etc/lightdm.conf.d
+	install -m 644 $(CONFIGS)/{01_debian.conf,02_ubuntu.conf} $(ETC_LIGHTDM)/lightdm.conf.d/
 	
 # File `55-conf.pkla` goes inside `/etc/polkit-1/localauthority/50-local.d`
 	mkdir -p $(ETC_POLKIT)/localauthority/50-local.d
