@@ -42,6 +42,7 @@ SHELL := /bin/bash
 ## Source Files and Directories
 ETCSKEL = etcskel
 CONFIGS = configs
+XDG_MENUS = $(CONFIGS)/xdg/menus
 SRC = src
 BENTO = bento
 THEMES = themes
@@ -87,7 +88,8 @@ install:
 	install -m 644 $(CONFIGS)/{10-magic-sysrq.conf,50-swappiness.conf,README.sysctl} $(ETC)/$(ETC_SYSCTL_D)/
 
 # The file used to manage *the categories* for *the applications menus* go to `/etc/xdg/menus`
-	install -m 644 $(CONFIGS)/applications.menu $(ETC_XDG_MENUS)
+	rsync -rl $(CONFIGS)/$(XDG_MENUS)/* $(ETC_XDG_MENUS)/
+	find $(ETC_XDG_MENUS) -type f -exec chmod 644 {} \;
 
 # The LighDM configuration files lightdm.conf and lightdm-gtk-greeter.conf will go to /etc/lightdm.conf.d
 # in case another configuration exists.
@@ -101,7 +103,7 @@ install:
 	mkdir -p $(ETC_POLKIT)/localauthority/50-local.d
 	install -m 644 $(CONFIGS)/55-conf.pkla $(ETC_POLKIT)/localauthority/50-local.d
 	chmod 700 $(ETC_POLKIT)/localauthority
-	
+
 # The `xcompmgr.sh`, `xsnow.sh` and `Plymouth theme switcher` scripts will go in
 # `/usr/local/bin` and will be executable
 	rsync -rl $(SRC)/ $(USR_LOCAL_BIN)/
@@ -137,7 +139,7 @@ clean:
 
 # The file used to manage *the categories* for *the applications menus* was in
 #`/etc/xdg/menus`
-	rm -f $(ETC_XDG_MENUS)/applications.menu
+	rm -f $(ETC_XDG_MENUS)/{applications.menu,lxde-applications.menu}
 
 # The LighDM configuration files lightdm.conf and lightdm-gtk-greeter.conf has
 # gone into /etc/lightdm.conf.d in case another configuration existed.
