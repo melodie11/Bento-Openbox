@@ -6,33 +6,34 @@ Global {
   allign=center
   margin=0
   widthtype=percent
-  width=99
-  height=28
+  width=80
+  height=30
   transparent=1
-  tintcolor=#000000
-  alpha=122
+  tintcolor=#64c07d
+  alpha=255
   autohide=0
   heightwhenhidden=3
   setdocktype=1
   setpartialstrut=1
   usefontcolor=1
-  fontsize=10
-  fontcolor=#ffffff
-  usefontsize=0
+  fontsize=13
+  fontcolor=#005c3a
+  usefontsize=1
   background=0
-  backgroundfile=/usr/share/bento/lxpanel/bg3.png
-  iconsize=26
+  backgroundfile=/usr/share/happy/lxpanel/transparent-bg.png
+  iconsize=30
   loglevel=2
 }
 Plugin {
   type=space
   Config {
   }
+  expand=0
 }
 Plugin {
   type=menu
   Config {
-    image=/usr/share/bento/lxpanel/menu-applications.png
+    image=/usr/share/bento/lxpanel/menu2.png
     system {
     }
     separator {
@@ -60,31 +61,44 @@ Plugin {
       id=pcmanfm.desktop
     }
     Button {
-      id=synaptic.desktop
+      id=arandr.desktop
     }
     Button {
-      id=firefox.desktop
+      id=org.xfce.mousepad.desktop
     }
     Button {
       id=sakura.desktop
     }
+    Button {
+      id=locale-configuration.desktop
+    }
+    Button {
+      id=firefox.desktop
+    }
   }
 }
 Plugin {
   type=space
   Config {
   }
-  expand=0
+  expand=1
 }
 Plugin {
   type=taskbar
   Config {
+    IconsOnly=-1
+    FlatButton=0
+    tooltips=-1
+    SameMonitorOnly=-1
+    GroupedTasks=1
+    DisableUpscale=-1
+    UseMouseWheel=-1
+    ShowAllDesks=0
+    MaxTaskWidth=60
+    spacing=3
+    UseSmallerIcons=0
   }
-}
-Plugin {
-  type=space
-  Config {
-  }
+  expand=1
 }
 Plugin {
   type=space
@@ -98,18 +112,53 @@ Plugin {
   }
 }
 Plugin {
-  type=dclock
+  type=batt
   Config {
-    ClockFmt=%R
-    TooltipFmt=%A %x
-    BoldFont=0
-    IconOnly=0
-    CenterText=0
+    ChargingColor1=#00aa7f
+    ChargingColor2=#007e5c
+    DischargingColor1=#ffee00
+    DischargingColor2=#ff5500
+    HideIfNoBattery=1
+    AlarmCommand=notify-send "Batterie faible" --icon=battery-caution
+    AlarmTime=15
+    BorderWidth=3
+    Size=8
+    ShowExtendedInformation=1
+    BatteryNumber=0
+    BackgroundColor=black
   }
 }
 Plugin {
   type=space
   Config {
   }
+  expand=0
 }
-
+Plugin {
+  type=netstat
+  Config {
+  }
+}
+Plugin {
+  type=space
+  Config {
+  }
+  expand=0
+}
+Plugin {
+  type=dclock
+  Config {
+    ClockFmt=%R
+    TooltipFmt=%A %x
+    BoldFont=1
+    IconOnly=0
+    CenterText=1
+  }
+}
+Plugin {
+  type=space
+  Config {
+    Size=2
+  }
+  expand=0
+}
